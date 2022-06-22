@@ -1,10 +1,10 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
 
-    <%= render 'users/userinfor', user: current_user, book: @book %>
+    <%= render 'users/userinfor', user: @user, book: @new_book %>
 
     <div class="col-md-8 offset-md-1">
-      <h2>Books detail</h2>
+      <h2>Book detail</h2>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
@@ -17,7 +17,7 @@
         <tbody>
           <tr>
             <td>
-              <%= link_to users_path(@user) do %>
+              <%= link_to user_path(@user) do %>
               <%=image_tag @user.get_profile_image(100,100) %>
               <div>
                 <%= @user.name %>
@@ -25,17 +25,19 @@
               <% end %>
             </td>
             <td>
-              <%= link_to @books.title , book_path(@books) %>
+              <%= link_to @book.title , book_path(@book) %>
             </td>
             <td>
-              <%= @books.body %>
+              <%= @book.body %>
+            </td>
+            <% if @book.user == current_user %>
+            <td>
+              <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %>
             </td>
             <td>
-              <%= link_to "Edit", edit_book_path(@books), class: "btn btn-sm btn-success" %>
+              <%= link_to "Destroy", book_path(@book.id), class: "btn btn-sm btn-danger", method: :delete, "data-comfirm" => "Are u sure" %>
             </td>
-            <td>
-              <%= link_to "destroy", book_path(@books.id), class: "btn btn-sm btn-danger", method: :delete, "data-comfirm" => "Are u sure" %>
-            </td>
+            <% end %>
           </tr>
         </tbody>
       </table>

@@ -20,7 +20,7 @@
 
         <div>
          <h4>Image</h4>
-         <%= f.file_field :profile_image, accept: "image/*" , class: "from-control uesr_profile_image" %>
+         <%= f.file_field :profile_image , accept: "image/*" , class: "from-control uesr_profile_image" %>
         </div>
 
         <div>
@@ -29,7 +29,7 @@
         </div>
 
         <div>
-         <%= f.submit 'Update User',class: "btn btn-secondary" %>
+         <%= f.submit 'Update User', class: "btn btn-secondary" %>
         </div>
        <% end %>
 
